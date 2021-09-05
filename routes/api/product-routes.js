@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).json({ message: 'No product found with that id!' });
       return;
     }
-    res.json(200).json(productData);
+    res.status(200).json(productData);
   }catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -46,26 +46,28 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
-    .then((product) => {
+  try{
+    const { product_name, price, stock, tagIds } = req.body;
+    const productData = await Product.create({
+      product_name,
+      price,
+      stock
+    });
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      if (req.body.tagIds.length) {
-        const productTagIdArr = req.body.tagIds.map((tag_id) => {
-          return {
-            product_id: product.id,
-            tag_id,
-          };
-        });
-        return ProductTag.bulkCreate(productTagIdArr);
-      }
+    const productTagIdArr = req.body.tagIds.map((tag_id) => {
+      return {
+        product_id: product.id,
+        tag_id,
+      };
+    });
+    const productTagData = await ProductTag.bulkCreate(productTagIdArr);
       // if no product tags, just respond
       res.status(200).json(product);
-    })
-    .then((productTagIds) => res.status(200).json(productTagIds))
-    .catch((err) => {
+    }
+    catch (err) {
       console.log(err);
       res.status(400).json(err);
-    });
+    };
 });
 
 // update product
@@ -105,7 +107,7 @@ router.put('/:id', (req, res) => {
     })
     .then((updatedProductTags) => res.json(updatedProductTags))
     .catch((err) => {
-      // console.log(err);
+      console.log(err);
       res.status(400).json(err);
     });
 });

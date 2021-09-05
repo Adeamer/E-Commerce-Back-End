@@ -8,10 +8,11 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try{
     const categoryData = await Product.findAll({
-      include: [{ model: Product }],
+      include: [{ model: Product, attributes: ['product_name'] }],
     });
     res.status(200).json(categoryData);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -48,7 +49,7 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Categore.update(
+  Category.update(
     {
       category_name: req.body.category_name,
     },
