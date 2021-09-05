@@ -39,10 +39,10 @@ router.post('/', async (req, res) => {
     tag_name: req.body.tag_name,
   })
   .then((newTag) => {
-    res.json(newTag);
+    res.status(200).json(newTag);
   })
   .catch ((err) => {
-    res.json(err);
+    res.status(500).json(err);
   });
 }); 
 
@@ -54,15 +54,15 @@ router.put('/:id', (req, res) => {
     },
     {
       where: {
-        id: req.params.id
-      }
+        id: req.params.id,
+      },
     })
     .then(tagData => {
       if (!tagData) {
-        res.status(404).json({ message: 'No Tag found with that ID.' });
+        res.status(404).json({ message: 'No Tag found with that id!' });
         return;
       }
-      res.json(tagData);
+      res.status(200).json(tagData);
     })
     .catch(err => {
       console.log(err);
