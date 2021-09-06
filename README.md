@@ -12,7 +12,7 @@
 2. [Usage](#Usage)
 3. [License](#License)
 4. [Video Demo](#Video-Demo)
-5. [Screen Grabs](#Screen-Grabs)
+5. [Screen Gifs](#Screen-Gifs)
 6. [Links](#Links)
     
     
@@ -37,13 +37,21 @@ MIT [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https
     
 
     
-## Screen Grabs
+## Screen Gifs
     
-    
+   ## Products
+![Untitled_ Sep 6, 2021 10_11 PM](https://user-images.githubusercontent.com/83004232/132215681-22488c43-e2b8-406e-95fa-112e7d858c4e.gif)
 
-    
+   ## Categories
+![Untitled_ Sep 6, 2021 10_12 PM](https://user-images.githubusercontent.com/83004232/132215883-7f46ee58-7df8-425b-962a-7a3493fa5d08.gif)
+
+   ## Tags
+![Untitled_ Sep 6, 2021 10_14 PM](https://user-images.githubusercontent.com/83004232/132216098-8965cace-137f-4d95-95c3-7c809d9c0808.gif)
+
 ## Links
 
-Here is a link to the Git-Hub Repository: 
+Here is a link to the Git-Hub Repository: https://github.com/Adeamer/E-Commerce-Back-End
+
+Here is a link to the video demo: [DEMO](https://drive.google.com/file/d/1sKustOt2_zoKYPjU3p1W-U2J0GeEHOfv/preview)
     
     
